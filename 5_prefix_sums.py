@@ -18,8 +18,8 @@ def mashrooms(A, k, m):
   result = 0
   for p in xrange(m):
     i = max(k - p, 0)
-    j = min(k + m - (k - i) * 2, n - 1)
+    j = min(k + m - 2 * p, n - 1)
     result = max(result, count_total(prefsums, i, j))
   return result
 
-print (mashrooms([2,3,7,5,1,3,9], 4, 6))
+print (mashrooms([2,3,7,5,1,3,9], 4, 6)) # 25
