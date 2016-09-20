@@ -21,6 +21,7 @@ def count(A, m):
 
 ##
 ## @brief      Checks if two arrays can swap only 1 element so their sums become equal.
+## O(n+m) time complexity.
 ##
 ## @param      A     First array of length n.
 ## @param      B     Second array of length n.
