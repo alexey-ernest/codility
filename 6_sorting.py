@@ -1,3 +1,9 @@
+from random import randint
+from timeit import default_timer as timer
+
+#import sys
+#sys.setrecursionlimit(10000)
+
 # O(n*n)
 def selectionSort(A):
   n = len(A)
@@ -73,7 +79,6 @@ def mergeSort(A):
 
 
 # Quicksort in-place implementation: O(n*logn)
-import random
 
 def quickSort(A, left=None, right=None):
   left = left or 0
@@ -83,7 +88,9 @@ def quickSort(A, left=None, right=None):
     return
 
   i, j = left, right
-  pivot = A[random.randint(left, right)] # chosing random pivot to minimize worst-case impact
+  p = left + (right - left) / 2
+  #p = randint(left, right)
+  pivot = A[p]
 
   while i <= j:
     while A[i] < pivot:
@@ -96,9 +103,20 @@ def quickSort(A, left=None, right=None):
       A[i], A[j] = A[j], A[i]
       i, j = i + 1, j - 1
 
-  quickSort(A, left, j)
-  quickSort(A, i, right)
+  # preventing unnecessary recursion calls
+  if left < j:
+    quickSort(A, left, j)
+  if i < right:
+    quickSort(A, i, right)
 
   return A
 
-print quickSort([1,7,3,5,2,2,8,6])
+
+# random array
+a = [randint(0, 1000) for i in xrange(100000)]
+
+start = timer()
+quickSort(a)
+end = timer()
+
+print end - start
