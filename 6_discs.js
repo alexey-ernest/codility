@@ -40,7 +40,6 @@ function solution(A) {
     ranges.sort(function (a, b) {
         return a[0] - b[0];
     });
-    console.log(ranges);
 
     // counting intersections: O(n*log(n))
     var intersections = 0,
@@ -50,7 +49,6 @@ function solution(A) {
         maxRange = ranges[i][1];
         inclusiveIndex = findIndexLowerThan(maxRange, ranges, i + 1);
         intersections += inclusiveIndex - i;
-        console.log(inclusiveIndex - i);
         if (intersections > 10000000) { // by task conditions
             return -1;
         }
@@ -67,7 +65,5 @@ function solution(A) {
 
 // 5,  2,  2, 2, 0, 0 = 11
 
-//console.log(findIndexLowerThan(4, [ [ -4, 6 ], [ -1, 1 ], [ 0, 4 ], [ 0, 8 ], [ 2, 4 ], [ 5, 5 ] ], 5) - 4);
-//console.log(solution([1,5,2,1,4,0]));
+console.log(solution([1,5,2,1,4,0]));
 console.log(solution([0,0,0,0,0,0]));
-//console.log(findIndexLowerThan(0, [ [ 0, 0 ], [ 1, 1 ], [ 2, 2 ], [ 3, 3 ], [ 4, 4 ], [ 5, 5 ] ], 1) - 0);
