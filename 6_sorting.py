@@ -71,4 +71,34 @@ def mergeSort(A):
 
   return A
 
-print mergeSort([1,7,3,5,2,2,8,6])
+
+# Quicksort in-place implementation: O(n*logn)
+import random
+
+def quickSort(A, left=None, right=None):
+  left = left or 0
+  right = right or len(A) - 1
+
+  if (left >= right):
+    return
+
+  i, j = left, right
+  pivot = A[random.randint(left, right)] # chosing random pivot to minimize worst-case impact
+
+  while i <= j:
+    while A[i] < pivot:
+      i += 1
+    while A[j] > pivot:
+      j -= 1
+
+    if i <= j:
+      # swaping elements
+      A[i], A[j] = A[j], A[i]
+      i, j = i + 1, j - 1
+
+  quickSort(A, left, j)
+  quickSort(A, i, right)
+
+  return A
+
+print quickSort([1,7,3,5,2,2,8,6])
