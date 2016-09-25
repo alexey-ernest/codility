@@ -21,6 +21,7 @@ function doublemaxslice(A) {
         sum = maxEnding + Math.max(A[i-1], y);
         y = Math.min(y, A[i-1]);
         if (sum < 0) {
+            // starting new double slice with Y in i-th element
             y = A[i++];
         }
         
