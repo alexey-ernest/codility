@@ -41,6 +41,7 @@ def arrayFactors(n):
 def factorization(x, F):
   """
   @brief      Finds all prime factors for number x
+  O(log(x))
   
   @param      x     Number to be factorized
   @param      F     Minimum prime factors for 1 <= k <= n
