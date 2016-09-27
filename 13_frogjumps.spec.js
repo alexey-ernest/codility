@@ -68,7 +68,7 @@ for (i = 0; i < fib.length; i+=1) {
 
 var iterations = 10,
     rand,
-    len = 50,
+    len = 100000,
     r1, r2,
     j;
 for (i = 0; i < iterations; i+=1) {
@@ -79,9 +79,10 @@ for (i = 0; i < iterations; i+=1) {
 
   //console.log(rand);
   r1 = frogjumps(rand);
-  r2 = jumps(rand, fibmap);
+  console.log(r1);
+  //r2 = jumps(rand, fibmap);
   if (r1 !== r2) {
-    console.log(rand, r1, r2);
+    //console.log(rand, r1, r2);
     break;
   }
 }
