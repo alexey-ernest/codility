@@ -1,15 +1,15 @@
 var assert = require('assert');
 var frogjumps = require('./13_frogjumps');
 
-// assert(frogjumps([0,0,0,1,1,0,1,0,0,0,0]) === 3);
-// assert(frogjumps([0,0,0,1,1,0,1,0,0,0,0,0]) === 1);
-// assert(frogjumps([0,0,0,1,1,0,1,0,0,0]) === -1);
-// assert(frogjumps([]) === 1);
-// assert(frogjumps([0]) === 1);
-// assert(frogjumps([1]) === 1);
-// assert(frogjumps([1,1]) === 1);
-// assert(frogjumps([1, 1, 0, 0, 0]) === 2);
-// assert(frogjumps([ 0, 0, 1, 0, 0, 0, 0, 1, 0, 0 ]) === 2);
+assert(frogjumps([0,0,0,1,1,0,1,0,0,0,0]) === 3);
+assert(frogjumps([0,0,0,1,1,0,1,0,0,0,0,0]) === 1);
+assert(frogjumps([0,0,0,1,1,0,1,0,0,0]) === -1);
+assert(frogjumps([]) === 1);
+assert(frogjumps([0]) === 1);
+assert(frogjumps([1]) === 1);
+assert(frogjumps([1,1]) === 1);
+assert(frogjumps([1, 1, 0, 0, 0]) === 2);
+assert(frogjumps([ 0, 0, 1, 0, 0, 0, 0, 1, 0, 0 ]) === 2);
 
 
 // Random checking
