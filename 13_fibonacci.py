@@ -10,3 +10,4 @@ def fibonacciDynamic(n):
   return fib[n];
 
 assert fibonacciDynamic(10) == 55
+assert fibonacciDynamic(31) > 1000000
