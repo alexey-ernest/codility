@@ -37,8 +37,9 @@ function commonprimedivisors(A, B) {
     for (i = 0; i < len; i+=1) { // O(n)
         if (A[i] === B[i]) {
           count += 1;
+          continue;
         }
-        
+
         // gcd contains all common prime divisors
         gcd = findgcd(A[i], B[i]); // O(log(a + b))
         
