@@ -17,42 +17,61 @@ function fibonacci(n) {
  * @param      {Array}  A       Leaves.
  * @return     {number}  Min number of Fib jumps.
  */
-function frogjumps(A, start, fib, jumps, jumpnumber) {
-    var len = A.length;
-
-    if (typeof start === 'undefined') {
-      // first init
-      start = -1;
-      fib = fibonacci(26), // O(1) <= 100000
-      jumps = [];
-      jumpnumber = 1;
-    }
-
-    var fiblen = fib.length,
-        i,
+function frogjumps(A) {
+    var len = A.length,
+        fib = fibonacci(26), // O(1) <= 100000
+        fiblen = fib.length,
+        i, j, k,
         step,
         nextjumps = [],
-        jumpslen;
+        next,
+        candidates,
+        candidateslen,
+        candidate,
+        jumpslen,
+        jumps = [],
+        jumpnumber = 1;
     
-    for (i = 1; i < fiblen; i+=1) { // O(log(n))
-      step = start + fib[i];
-      if (step > len) {
-        break;
-      }
-      
-      if (step === len || A[step]) {
-        // if we can jump and we haven't been there
-        if (!jumps[step] || jumps[step] > jumpnumber) {
-          jumps[step] = jumpnumber;
-          nextjumps.push(step);
+    // making step by step building the next step set
+    nextjumps.push([-1]);
+    for (i = 0; i < nextjumps.length; i+=1) {
+      // marking all possible steps from current location
+      candidates = nextjumps[i];
+      candidateslen = candidates.length;
+      next = [];
+      for (j = 0; j < candidateslen; j+=1) {
+        // trying all fibonacci numbers from current position
+        candidate = candidates[j];
+        for (k = 1; k < fiblen; k+=1) {
+          step = candidate + fib[k];
+          if (step > len) {
+            break;
+          }
+
+          if (step === len || (A[step] && !jumps[step])) {
+            // if we can jump and we haven't been there
+            jumps[step] = i + 1;
+            next.push(step);
+          }
+        }
+
+        //console.log(jumps);
+
+        if (jumps[len]) {
+          // right bank reached
+          break;
         }
       }
-    }
 
-    // going to next leaves
-    jumpslen = nextjumps.length;
-    for (i = 0; i < jumpslen; i+=1) { // O(n)
-      frogjumps(A, nextjumps[i], fib, jumps, jumpnumber + 1);
+      if (jumps[len]) {
+        // right bank reached
+        break;
+      }
+
+      if (next.length) {
+        // appending next steps
+        nextjumps.push(next);
+      }
     }
 
     return jumps[len] || -1;

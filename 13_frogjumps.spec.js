@@ -12,6 +12,7 @@ assert(frogjumps([1, 1, 0, 0, 0]) === 2);
 assert(frogjumps([ 0, 0, 1, 0, 0, 0, 0, 1, 0, 0 ]) === 2);
 
 
+
 // Random checking
 
 function fibonacci(n) {
@@ -23,8 +24,6 @@ function fibonacci(n) {
     
     return fib;
 }
-
-
 
 // O(2^n) solution for checking
 function jumps(a, fib, start) {
