@@ -11,3 +11,6 @@ def fibonacciDynamic(n):
 
 assert fibonacciDynamic(10) == 55
 assert fibonacciDynamic(31) > 1000000
+print fibonacciDynamic(26)
+
+# 0, 1, 2, 3, 5, 8, 13, 21, 34, 55
