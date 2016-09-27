@@ -28,9 +28,7 @@ function frogjumps(A) {
         candidates,
         candidateslen,
         candidate,
-        jumpslen,
-        jumps = [],
-        jumpnumber = 1;
+        jumps = [];
     
     // making step by step building the next step set
     nextjumps.push([-1]);
