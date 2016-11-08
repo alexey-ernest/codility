@@ -46,25 +46,25 @@ function alternativeSolution(A, B, C) {
   return result;
 }
 
-// assert(nailedPlanks([1,4,5,8],[4,5,9,10],[4,6,7,10,2]) === 4);
+assert(nailedPlanks([1,4,5,8],[4,5,9,10],[4,6,7,10,2]) === 4);
 
-// // unsorted planks
-// assert(nailedPlanks([4,5,1,8],[5,9,4,10],[4,6,7,10,2]) === 4);
+// unsorted planks
+assert(nailedPlanks([4,5,1,8],[5,9,4,10],[4,6,7,10,2]) === 4);
 
-// // all planks are points
-// assert(nailedPlanks([1,4,5,10],[1,4,5,10],[1,2,3,4,5,6,7,8,9,10]) === 10);
+// all planks are points
+assert(nailedPlanks([1,4,5,10],[1,4,5,10],[1,2,3,4,5,6,7,8,9,10]) === 10);
 
-// // few nails in the same place
-// assert(nailedPlanks([1,4,5,8],[4,5,9,10],[4,6,7,10,4,7,2]) === 4);
+// few nails in the same place
+assert(nailedPlanks([1,4,5,8],[4,5,9,10],[4,6,7,10,4,7,2]) === 4);
 
-// // random test (B is negative-sorted)
-// assert(nailedPlanks([ 1, 5 ], [ 10, 6 ], [ 1, 1, 7, 6, 10 ]) === 4);
+// random test (B is negative-sorted)
+assert(nailedPlanks([ 1, 5 ], [ 10, 6 ], [ 1, 1, 7, 6, 10 ]) === 4);
 
 
 // checking random inputs
 var i,
     j,
-    tests = 10,
+    tests = 0,
     N,
     M,
     A,
