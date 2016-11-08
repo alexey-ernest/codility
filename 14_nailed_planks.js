@@ -19,7 +19,14 @@ function countingSortIndexes(A, M) {
         res[el].push(i);
     }
 
-    return res;
+    var result = [];
+    for (i = 0; i <= M; i+=1) {
+        if (res[i]) {
+            result.push(res[i]);
+        }
+    }
+
+    return result;
 }
 
 /**
@@ -36,38 +43,37 @@ function buildSection(A, B, C) { // O(M)
         j = 0,
         k = 0,
         q,
+        p,
         section = [],
-        planks = [];
+        planks = [],
+        starts,
+        ends;
 
     // sorting A and B
     var sortedAIndices = countingSortIndexes(A, 2*M),
-        sortedA = [],
-        sortedB = [];
-    for (i = 0; i < 2*M; i+=1) {
-        if (typeof sortedAIndices[i] === 'undefined') {
-            continue;
-        }
-
-        sortedA.push(A[sortedAIndices[i]]);
-        sortedB.push(B[sortedAIndices[i]]);
-    }
+        sortedBIndices = countingSortIndexes(B, 2*M);
 
     // building planks section: time O(M), space O(M)
     for (i = 1; i <= 2*M; i+=1) {
-        if (sortedA[j] === i) {
-            // new plank started
-            section.push(j);
+        starts = sortedAIndices[j];
+        if (starts && A[starts[0]] === i) {
+            for (q = 0; q < starts.length; q+=1) {
+                // new planks started
+                section.push(starts[q]);
+            }
             j+=1;
         }
         
         planks[i] = section.slice(0);
         
-        if (sortedB[k] === i) {
-            // plank just ended
+        ends = sortedBIndices[k];
+        if (ends && B[ends[0]] === i) {
+            // planks just ended
             for (q = 0; q < section.length; q+=1) {
-                if (section[q] === k) {
-                    section.splice(q, 1);
-                    break;
+                for(p = 0; p < ends.length; p+=1) {
+                    if (section[q] === ends[p]) {
+                        section.splice(q, 1);
+                    }
                 }
             }
             k+=1;
@@ -83,7 +89,7 @@ function areAllNailed(N, section, C, p) { // O(N+M)
         nailedPlanks = [],
         nail,
         sec;
-    
+
     // counting nailed planks: O(M)
     for (i = 0; i < p; i+=1) {
         nail = C[i];
